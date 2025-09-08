@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Page not found • Illuminated Pro Hub</title>
+<link rel="icon" href="/assets/favicon.png" sizes="32x32" />
+<style>
+:root { --bg:#f9fafc; --ink:#111827; --muted:#6b7280; --border:#e5e7eb; --brand:#3b82f6; --card:#fff; }
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);display:flex;min-height:100vh;flex-direction:column}
+header{background:#fff;border-bottom:1px solid var(--border)}
+.nav{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
+.brand img{width:28px;height:28px;display:block}
+main.wrap{flex:1;max-width:900px;margin:0 auto;padding:40px 20px}
+h1{font-size:1.8rem;margin:0 0 12px} p{color:var(--muted)}
+.panel{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px}
+.btn{display:inline-block;margin-top:16px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:inherit;background:#fff}
+footer{background:#fff;border-top:1px solid var(--border);padding:16px;font-size:.9rem;text-align:center;color:var(--muted)}
+.avatar{width:32px;height:32px;border-radius:999px;background:#eef2ff;color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:.9rem;border:1px solid #dbe2ff}
+.menu{position:relative}.menu-btn,.sign-in{border:1px solid var(--border);background:#fff;border-radius:8px;padding:6px 10px;font-size:.85rem;text-decoration:none;cursor:pointer}
+.menu-pop{position:absolute;right:0;top:40px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 30px rgba(12,22,44,.1);min-width:200px;padding:6px;display:none}
+.menu-pop a{display:block;padding:10px 12px;text-decoration:none;color:inherit;border-radius:8px;font-size:.9rem}.menu-pop a:hover{background:#f3f4f6}
+@media (max-width:520px){ .user-name{display:none} }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="/"><img src="/assets/logo.png" alt="Illuminated Thinking logo" width="28" height="28" /><span>illuminated.pro — Hub</span></a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div id="avatar" class="avatar" aria-hidden="true">IT</div>
+        <div id="userName" class="user-name">Guest</div>
+      </div>
+      <a id="signInLink" class="sign-in" href="/auth/login">Sign in</a>
+      <div id="accountMenu" class="menu" style="display:none;">
+        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account ▾</button>
+        <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
+          <a href="/profile" role="menuitem">Profile</a>
+          <a href="/billing" role="menuitem">Billing</a>
+          <a href="/settings" role="menuitem">Settings</a>
+          <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
+          <a href="/auth/logout" role="menuitem">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="panel">
+    <h1>Page not found</h1>
+    <p>Sorry — we can’t find that page. It may have moved or the link is incorrect.</p>
+    <a class="btn" href="/">← Back to the Hub</a>
+  </div>
+</main>
+
+<footer>
+  <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Use</a> · <a href="/copyright">© Illuminated Thinking</a>
+</footer>
+
+<script>
+(function () {
+  const nameEl=document.getElementById('userName');
+  const avatarEl=document.getElementById('avatar');
+  const signInLink=document.getElementById('signInLink');
+  const accountMenu=document.getElementById('accountMenu');
+  const btn=document.getElementById('menuBtn');
+  const pop=document.getElementById('menuPop');
+  function initials(t){return (t||'').split(/\s+/).filter(Boolean).slice(0,2).map(s=>s[0].toUpperCase()).join('')||'IT';}
+  fetch('/api/me',{credentials:'include'}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{
+    nameEl.textContent=d.name||d.email;
+    if(d.picture){avatarEl.style.background='transparent';avatarEl.style.border='none';avatarEl.innerHTML='<img src="'+d.picture+'" alt="" style="width:100%;height:100%;border-radius:999px;display:block;object-fit:cover">';}
+    else{avatarEl.textContent=initials(d.name||d.email);}
+    signInLink.style.display='none';accountMenu.style.display='block';
+  }).catch(()=>{nameEl.textContent='Guest';avatarEl.textContent='IT';signInLink.style.display='inline-block';accountMenu.style.display='none';});
+  btn&&btn.addEventListener('click',()=>{const o=pop.style.display==='block';pop.style.display=o?'none':'block';btn.setAttribute('aria-expanded',String(!o));});
+  document.addEventListener('click',(e)=>{if(pop&&btn&&!pop.contains(e.target)&&!btn.contains(e.target)){pop.style.display='none';btn.setAttribute('aria-expanded','false');}});
+  document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&pop){pop.style.display='none';btn.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body>
+</html>
