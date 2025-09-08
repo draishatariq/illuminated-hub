@@ -63,9 +63,6 @@
   /* Icon helper */
   .icon { display:inline-flex; vertical-align:middle; margin-right:8px; line-height:0; }
   .icon svg { width:1.1em; height:1.1em; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-
-/* Add a safe caret after the Account button without using special glyphs */
-.menu-btn::after { content: " \25BE"; }
 </style>
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
 </head>
@@ -76,7 +73,7 @@
     <!-- Logo: replace src with your file path -->
     <a class="brand" href="/" aria-label="Illuminated Pro Hub Home">
       <img src="/assets/logo.png" alt="Illuminated Thinking logo" />
-      <span>illuminated.pro &mdash; Hub</span>
+      <span>illuminated.pro â€” Hub</span>
     </a>
 
     <div class="nav-right">
@@ -90,7 +87,7 @@
 
       <!-- Shown when signed in -->
       <div id="accountMenu" class="menu" style="display:none;">
-        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account&ndash;¾</button>
+        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account â–¾</button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
           <a href="/profile" role="menuitem">Profile</a>
           <a href="/billing" role="menuitem">Billing</a>
@@ -195,7 +192,6 @@
 
 </body>
 </html>
-
 
 
 

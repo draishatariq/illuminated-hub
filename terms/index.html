@@ -14,11 +14,14 @@ header,footer{background:#fff;border-color:var(--border);border-style:solid} hea
 main.wrap{flex:1;max-width:900px;margin:0 auto;padding:40px 20px} h1{font-size:1.8rem;margin:0 0 10px} h2{font-size:1.1rem;margin:18px 0 8px}
 p,li{color:#4b5563;line-height:1.6}
 footer a{color:inherit;text-decoration:none;margin:0 8px} footer a:hover{text-decoration:underline}
+
+/* Add a safe caret after the Account button without using special glyphs */
+.menu-btn::after { content: " \25BE"; }
 </style>  <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
 </head><body>
 <header>
   <div class="nav" role="navigation" aria-label="Primary">
-    <a class="brand" href="/"><img src="/assets/logo.png" alt=""/><span>illuminated.pro — Hub</span></a>
+    <a class="brand" href="/"><img src="/assets/logo.png" alt=""/><span>illuminated.pro &mdash; Hub</span></a>
     <div style="display:flex;align-items:center;gap:10px;">
       <div style="display:flex;align-items:center;gap:10px;">
         <div id="avatar" class="avatar" aria-hidden="true">IT</div>
@@ -26,7 +29,7 @@ footer a{color:inherit;text-decoration:none;margin:0 8px} footer a:hover{text-de
       </div>
       <a id="signInLink" class="sign-in" href="/auth/login">Sign in</a>
       <div id="accountMenu" class="menu" style="display:none;">
-        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account ▾</button>
+        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account </button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
           <a href="/profile" role="menuitem">Profile</a>
           <a href="/billing" role="menuitem">Billing</a>
@@ -83,5 +86,6 @@ footer a{color:inherit;text-decoration:none;margin:0 8px} footer a:hover{text-de
 (function(){const n=document.getElementById('userName'),a=document.getElementById('avatar'),s=document.getElementById('signInLink'),m=document.getElementById('accountMenu'),b=document.getElementById('menuBtn'),p=document.getElementById('menuPop');function i(t){return (t||'').split(/\s+/).filter(Boolean).slice(0,2).map(s=>s[0].toUpperCase()).join('')||'IT'}fetch('/api/me',{credentials:'include'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{n.textContent=d.name||d.email; if(d.picture){a.style.background='transparent';a.style.border='none';a.innerHTML='<img src="'+d.picture+'" alt="" style="width:100%;height:100%;border-radius:999px;display:block;object-fit:cover">'}else{a.textContent=i(d.name||d.email)} s.style.display='none';m.style.display='block'}).catch(()=>{n.textContent='Guest';a.textContent='IT';s.style.display='inline-block';m.style.display='none'}); b&&b.addEventListener('click',()=>{const o=p.style.display==='block';p.style.display=o?'none':'block';b.setAttribute('aria-expanded',String(!o))}); document.addEventListener('click',e=>{if(p&&b&&!p.contains(e.target)&&!b.contains(e.target)){p.style.display='none';b.setAttribute('aria-expanded','false')}}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&p){p.style.display='none';b.setAttribute('aria-expanded','false')}});})();
 </script>
 </body></html>
+
 
 
