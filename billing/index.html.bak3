@@ -38,7 +38,7 @@
       </div>
       <a id="signInLink" class="sign-in" href="/auth/login">Sign in</a>
       <div id="accountMenu" class="menu" style="display:none;">
-        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account</button>
+        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account </button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
           <a href="/profile" role="menuitem">Profile</a>
           <a href="/billing" role="menuitem">Billing</a>
@@ -89,7 +89,6 @@
 </script>
 </body>
 </html>
-
 
 
 

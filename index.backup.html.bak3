@@ -86,7 +86,7 @@
 
       <!-- Shown when signed in -->
       <div id="accountMenu" class="menu" style="display:none;">
-        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account</button>
+        <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account&ndash;¾</button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
           <a href="/profile" role="menuitem">Profile</a>
           <a href="/billing" role="menuitem">Billing</a>
@@ -191,7 +191,6 @@
 
 </body>
 </html>
-
 
 
 
