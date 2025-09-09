@@ -1,0 +1,2 @@
+﻿/homework-resources    https://homework.illuminated.pro/ 302
+/homework-resources/*  https://homework.illuminated.pro/:splat 302
