@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Settings • Illuminated Pro Hub</title>
+  <title>Billing • Illuminated Pro Hub</title>
   <style>
     :root { --bg:#f9fafc; --ink:#111827; --muted:#6b7280; --border:#e5e7eb; --card:#fff; --brand:#3b82f6; }
     *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);display:flex;min-height:100vh;flex-direction:column}
@@ -52,13 +52,13 @@
 </header>
 
 <main class="wrap">
-  <h1>Settings</h1>
+  <h1>Billing</h1>
   <div class="panel">
-    <p>Configure preferences, notifications, and security.</p>
+    <p>Manage invoices, payment methods, and plan.</p>
     <ul>
-      <li><a href="#">Notification preferences</a></li>
-      <li><a href="#">Language &amp; region</a></li>
-      <li><a href="#">Two-factor authentication</a></li>
+      <li><a href="#">Update payment method</a></li>
+      <li><a href="#">View/download invoices</a></li>
+      <li><a href="#">Change plan</a></li>
     </ul>
   </div>
 </main>
@@ -89,7 +89,6 @@
 </script>
 </body>
 </html>
-
 
 
 

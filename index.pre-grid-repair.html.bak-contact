@@ -68,17 +68,27 @@
 .menu-btn::after { content: " \25BE"; }
 </style>
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
-
-
-<style id="apps-grid-css">
-  /* Authoritative multi-column layout for the dashboard cards */
-  #apps-grid {
-    display: grid !important;
-    gap: 24px !important;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
-    align-items: stretch !important;
+<style>/* --- Layout upgrades for dashboard grid --- */
+  main.wrap { max-width: 1100px; padding: 56px 24px; }
+  .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: stretch; }
+  .card { text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-height: 160px; padding: 24px; border-radius: 14px; border: 1px solid var(--border, #e5e7eb); background: var(--card, #fff); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .card:hover { transform: translateY(-2px); border-color: #c9cbe3; box-shadow: 0 8px 26px rgba(12,22,44,.10); }
+  .card h3 { margin: 0 0 4px; font-size: 1.15rem; line-height: 1.2; display: flex; align-items: center; gap: 8px; }
+  .card p { margin: 0; font-size: .95rem; color: var(--muted, #6b7280); }
+  .icon { display:inline-flex; vertical-align:middle; margin-right:0; line-height:0; }
+  .icon svg { width:1.1em; height:1.1em; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  @media (min-width: 1280px) { main.wrap { max-width: 1200px; } .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } }
+</style>
+<style id="grid-upgrade">
+  /* Robust multi-column grid for dashboard cards */
+  main.wrap { max-width: 1100px; padding: 56px 24px; }
+  .grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    align-items: stretch;
   }
-  #apps-grid .card {
+  .card {
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -90,105 +100,17 @@
     background: var(--card, #fff);
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
-  #apps-grid .card:hover { transform: translateY(-2px); border-color: #c9cbe3; box-shadow: 0 8px 26px rgba(12,22,44,.10); }
-  #apps-grid .card h3 { margin: 0 0 4px; font-size: 1.15rem; line-height: 1.2; display: flex; align-items: center; gap: 8px; }
-  #apps-grid .card p { margin: 0; font-size: .95rem; color: var(--muted, #6b7280); }
-  /* icon tidy */
-  #apps-grid .icon { display:inline-flex; vertical-align:middle; line-height:0; }
-  #apps-grid .icon svg { width:1.1em; height:1.1em; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .card:hover { transform: translateY(-2px); border-color: #c9cbe3; box-shadow: 0 8px 26px rgba(12,22,44,.10); }
+  .card h3 { margin: 0 0 4px; font-size: 1.15rem; line-height: 1.2; display: flex; align-items: center; gap: 8px; }
+  .card p { margin: 0; font-size: .95rem; color: var(--muted, #6b7280); }
+
+  /* Inline SVG icons */
+  .icon { display:inline-flex; vertical-align:middle; line-height:0; }
+  .icon svg { width:1.1em; height:1.1em; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
   @media (min-width: 1280px) {
-    #apps-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; }
-  }
-</style>
-<style id="polish-pack">
-  /* ---------- Visual polish pack (no markup changes) ---------- */
-  :root{
-    --bg2: color-mix(in oklab, var(--bg) 92%, #fff);
-    --ring:#93c5fd; /* focus ring */
-  }
-
-  /* Soft background + subtle top glow */
-  body{
-    background:
-      radial-gradient(1200px 400px at 50% -200px, rgba(59,130,246,.08), transparent 60%),
-      var(--bg);
-  }
-
-  /* Header: stick + soft shadow */
-  header{
-    position: sticky; top:0; z-index: 10;
-    backdrop-filter: saturate(1.1) blur(4px);
-    box-shadow: 0 6px 24px rgba(17,24,39,.06);
-  }
-
-  /* Page heading */
-  h1{
-    font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
-    font-weight: 800;
-    letter-spacing:.2px;
-    background: linear-gradient(180deg, var(--ink), color-mix(in oklab, var(--ink) 88%, transparent));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    margin-bottom: 28px;
-  }
-
-  /* Cards: left-aligned, comfy, livelier hover */
-  #apps-grid .card{
-    text-align: left;
-    padding: 26px 24px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: linear-gradient(180deg, var(--card), var(--bg2));
-    box-shadow: 0 1px 0 rgba(17,24,39,.04) inset;
-    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-  }
-  #apps-grid .card:hover{
-    transform: translateY(-2px);
-    border-color: color-mix(in oklab, var(--brand) 40%, var(--border));
-    box-shadow: 0 10px 28px rgba(12,22,44,.12);
-  }
-  #apps-grid .card h3{
-    margin: 0 0 6px;
-    display:flex; align-items:center; gap:10px;
-    font-weight: 700; letter-spacing:.2px;
-  }
-  /* Make the little SVGs sit in a soft pill */
-  #apps-grid .icon{
-    width: 34px; height: 34px; border-radius: 10px;
-    background: color-mix(in oklab, var(--brand) 12%, transparent);
-    display:grid; place-items:center;
-  }
-  #apps-grid .icon svg{ width:1.05em; height:1.05em; stroke-width:2.2 }
-
-  /* Links & buttons */
-  a:hover{ color: color-mix(in oklab, var(--brand) 75%, var(--ink)); }
-  .sign-in, .menu-btn{
-    transition: border-color .16s ease, background-color .16s ease, color .16s ease;
-  }
-  .sign-in:hover, .menu-btn:hover{
-    border-color: color-mix(in oklab, var(--brand) 35%, var(--border));
-  }
-
-  /* Focus states (keyboard-friendly) */
-  :where(a, button, .card, .menu-pop a):focus-visible{
-    outline: 3px solid var(--ring);
-    outline-offset: 2px;
-    border-radius: 12px;
-  }
-
-  /* Footer tidy */
-  footer{
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,.02));
-  }
-
-  /* Respect reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    *{ animation: none !important; transition: none !important }
-  }
-
-  /* Dark mode tweaks */
-  @media (prefers-color-scheme: dark){
-    #apps-grid .card{ background: linear-gradient(180deg, var(--card), color-mix(in oklab,#000 8%, var(--card))); }
-    header{ box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+    main.wrap { max-width: 1200px; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
   }
 </style>
 </head>
@@ -228,7 +150,7 @@
 
 <main class="wrap">
   <h1>Welcome to the Hub</h1>
-  <div id="apps-grid">
+  <div class="grid">
   <a class="card" href="https://notes.illuminatednotes.net">
     <h3>
       <span class="icon" aria-hidden="true">
@@ -245,7 +167,7 @@
     <p>Accurate transcripts &amp; note drafting</p>
   </a>
 
-  <a class="card" href="https://clinician-emdr.illuminated.pro/clinician.html" target="_blank" rel="noopener">
+  <a class="card" href="https://emdr.illuminated.pro">
     <h3>
       <span class="icon" aria-hidden="true">
         <!-- Repeat / Loop -->
@@ -277,6 +199,20 @@
     <p>Create visual case formulations</p>
   </a>
 
+  <a class="card" href="https://meet.illuminated.pro">
+    <h3>
+      <span class="icon" aria-hidden="true">
+        <!-- Video camera -->
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="7" width="13" height="10" rx="2"></rect>
+          <path d="M16 10l5-3v10l-5-3z"></path>
+        </svg>
+      </span>
+      Video Call
+    </h3>
+    <p>Coming Soon...</p>
+  </a>
+
   <a class="card" href="/homework-resources/">
     <h3>
       <span class="icon" aria-hidden="true">
@@ -295,9 +231,9 @@
 <footer>
   <a href="/privacy">Privacy Policy</a> |
   <a href="/terms">Terms of Use</a> |
-  <a href="/copyright">&copy; Illuminated Thinking</a> |
+  <a href="/copyright">Â© Illuminated Thinking</a> |
   <a href="/support">Support</a> |
-  <a href="mailto:info@illuminatedthinking.co.uk">Email: info@illuminatedthinking.co.uk</a>
+  <a href="/contact">Contact</a>
 </footer>
 
 <!-- Identity + menu script (requires Cloudflare Access middleware and /api/me) -->
@@ -362,11 +298,6 @@
 
 </body>
 </html>
-
-
-
-
-
 
 
 
