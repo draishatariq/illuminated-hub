@@ -154,7 +154,7 @@
     <p>Accurate transcripts &amp; note drafting</p>
   </a>
 
-  <a class="card" href="https://emdr.illuminated.pro">
+  <a class="card" href="https://clinician-emdr.illuminated.pro/clinician.html" target="_blank" rel="noopener">
     <h3>
       <span class="icon" aria-hidden="true">
         <!-- Repeat / Loop -->
@@ -186,20 +186,6 @@
     <p>Create visual case formulations</p>
   </a>
 
-  <a class="card" href="https://meet.illuminated.pro">
-    <h3>
-      <span class="icon" aria-hidden="true">
-        <!-- Video camera -->
-        <svg viewBox="0 0 24 24">
-          <rect x="3" y="7" width="13" height="10" rx="2"></rect>
-          <path d="M16 10l5-3v10l-5-3z"></path>
-        </svg>
-      </span>
-      Video Call
-    </h3>
-    <p>Coming Soon...</p>
-  </a>
-
   <a class="card" href="/homework-resources/">
     <h3>
       <span class="icon" aria-hidden="true">
@@ -220,7 +206,7 @@
   <a href="/terms">Terms of Use</a> |
   <a href="/copyright">&copy; Illuminated Thinking</a> |
   <a href="/support">Support</a> |
-  <a href="mailto:info@illuminatedthinking.co.uk">Contact</a>
+  <a href="mailto:info@illuminatedthinking.co.uk">Email: info@illuminatedthinking.co.uk</a>
 </footer>
 
 <!-- Identity + menu script (requires Cloudflare Access middleware and /api/me) -->
