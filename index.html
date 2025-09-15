@@ -69,47 +69,23 @@
 </style>
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
 
-
-
 <style id="polish-pack">
   /* ---------- Visual polish pack (no markup changes) ---------- */
-  :root{
-    --bg2: color-mix(in oklab, var(--bg) 92%, #fff);
-    --ring:#93c5fd; /* focus ring */
-  }
-
-  /* Soft background + subtle top glow */
+  :root{ --bg2: color-mix(in oklab, var(--bg) 92%, #fff); --ring:#93c5fd; }
   body{
     background:
       radial-gradient(1200px 400px at 50% -200px, rgba(59,130,246,.08), transparent 60%),
       var(--bg);
   }
-
-  /* Header: stick + soft shadow */
-  header{
-    position: sticky; top:0; z-index: 10;
-    backdrop-filter: saturate(1.1) blur(4px);
-    box-shadow: 0 6px 24px rgba(17,24,39,.06);
-  }
-
-  /* Page heading */
+  header{ position: sticky; top:0; z-index: 10; backdrop-filter: saturate(1.1) blur(4px); box-shadow: 0 6px 24px rgba(17,24,39,.06); }
   h1{
-    font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
-    font-weight: 800;
-    letter-spacing:.2px;
+    font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem); font-weight: 800; letter-spacing:.2px;
     background: linear-gradient(180deg, var(--ink), color-mix(in oklab, var(--ink) 88%, transparent));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    margin-bottom: 28px;
+    -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 28px;
   }
-
-  /* Cards: left-aligned, comfy, livelier hover */
   #apps-grid .card{
-    text-align: left;
-    padding: 26px 24px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: linear-gradient(180deg, var(--card), var(--bg2));
-    box-shadow: 0 1px 0 rgba(17,24,39,.04) inset;
+    text-align: left; padding: 26px 24px; border-radius: 14px; border: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--card), var(--bg2)); box-shadow: 0 1px 0 rgba(17,24,39,.04) inset;
     transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
   }
   #apps-grid .card:hover{
@@ -117,57 +93,23 @@
     border-color: color-mix(in oklab, var(--brand) 40%, var(--border));
     box-shadow: 0 10px 28px rgba(12,22,44,.12);
   }
-  #apps-grid .card h3{
-    margin: 0 0 6px;
-    display:flex; align-items:center; gap:10px;
-    font-weight: 700; letter-spacing:.2px;
-  }
-  /* Make the little SVGs sit in a soft pill */
-  #apps-grid .icon{
-    width: 34px; height: 34px; border-radius: 10px;
-    background: color-mix(in oklab, var(--brand) 12%, transparent);
-    display:grid; place-items:center;
-  }
+  #apps-grid .card h3{ margin: 0 0 6px; display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; }
+  #apps-grid .icon{ width: 34px; height: 34px; border-radius: 10px; background: color-mix(in oklab, var(--brand) 12%, transparent); display:grid; place-items:center; }
   #apps-grid .icon svg{ width:1.05em; height:1.05em; stroke-width:2.2 }
-
-  /* Links & buttons */
   a:hover{ color: color-mix(in oklab, var(--brand) 75%, var(--ink)); }
-  .sign-in, .menu-btn{
-    transition: border-color .16s ease, background-color .16s ease, color .16s ease;
-  }
-  .sign-in:hover, .menu-btn:hover{
-    border-color: color-mix(in oklab, var(--brand) 35%, var(--border));
-  }
-
-  /* Focus states (keyboard-friendly) */
-  :where(a, button, .card, .menu-pop a):focus-visible{
-    outline: 3px solid var(--ring);
-    outline-offset: 2px;
-    border-radius: 12px;
-  }
-
-  /* Footer tidy */
-  footer{
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,.02));
-  }
-
-  /* Respect reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    *{ animation: none !important; transition: none !important }
-  }
-
-  /* Dark mode tweaks */
+  .sign-in, .menu-btn{ transition: border-color .16s ease, background-color .16s ease, color .16s ease; }
+  .sign-in:hover, .menu-btn:hover{ border-color: color-mix(in oklab, var(--brand) 35%, var(--border)); }
+  :where(a, button, .card, .menu-pop a):focus-visible{ outline: 3px solid var(--ring); outline-offset: 2px; border-radius: 12px; }
+  footer{ background: linear-gradient(180deg, transparent, rgba(0,0,0,.02)); }
+  @media (prefers-reduced-motion: reduce){ *{ animation: none !important; transition: none !important } }
   @media (prefers-color-scheme: dark){
     #apps-grid .card{ background: linear-gradient(180deg, var(--card), color-mix(in oklab,#000 8%, var(--card))); }
     header{ box-shadow: 0 8px 24px rgba(0,0,0,.35); }
   }
 </style>
 
-
-
-
 <style id="dashboard-grid-clean">
-  /* Comfortable page width */
+  /* Comfortable page width (kept for consistency; inline style below will overrule if needed) */
   main.wrap { max-width: 1200px; padding: 36px 24px; margin: 0 auto; }
 
   /* Multi-column grid */
@@ -193,20 +135,11 @@
     transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
     overflow: visible;
   }
-  #apps-grid .card:hover {
-    transform: translateY(-2px);
-    border-color: #c9cbe3;
-    box-shadow: 0 10px 24px rgba(12,22,44,.10);
-  }
+  #apps-grid .card:hover { transform: translateY(-2px); border-color: #c9cbe3; box-shadow: 0 10px 24px rgba(12,22,44,.10); }
   #apps-grid .card h3 { margin: 0 0 6px; font-size: 1.02rem; display:flex; align-items:center; gap:10px; }
   #apps-grid .card p  { margin: 0; font-size: .9rem; color: var(--muted, #6b7280); }
 
-  /* Slightly wider columns on large screens */
-  @media (min-width: 1280px) {
-    #apps-grid.cards-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-  }
-
-  /* Fallback if CSS Grid unsupported */
+  @media (min-width: 1280px) { #apps-grid.cards-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); } }
   @supports not (display: grid) {
     #apps-grid.cards-grid { display: flex; flex-wrap: wrap; gap: 18px; }
     #apps-grid.cards-grid .card { width: clamp(220px, 31%, 320px); }
@@ -258,9 +191,10 @@
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" style="max-width:1200px;width:100%;padding:36px 24px;margin:0 auto;">
   <h1>Welcome to the Hub</h1>
-  <div id="apps-grid" class="cards-grid">
+  <div id="apps-grid" class="cards-grid"
+       style="display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));align-items:stretch;width:100%;">
   <a class="card" href="https://notes.illuminatednotes.net">
     <h3>
       <span class="icon" aria-hidden="true">
@@ -276,7 +210,7 @@
     </h3>
     <p>Accurate transcripts &amp; note drafting</p>
   </a>
-<a class="card" href="https://doxy.me/sign-in" target="_blank" rel="noopener">
+  <a class="card" href="https://doxy.me/sign-in" target="_blank" rel="noopener">
     <h3>
       <span class="icon" aria-hidden="true">
         <!-- Video camera icon -->
@@ -302,7 +236,6 @@
     </h3>
     <p>Identify and label emotions</p>
   </a>
-
 
   <a class="card" href="https://clinician-emdr.illuminated.pro/clinician.html" target="_blank" rel="noopener">
     <h3>
@@ -350,8 +283,8 @@
     <p>Send clients interactive forms</p>
   </a>
 
-  
-</div></main>
+  </div>
+</main>
 
 <footer>
   <a href="/privacy">Privacy Policy</a> |
@@ -400,7 +333,7 @@
       accountMenu.style.display = 'none';
     });
 
-  // Simple account menu toggle + close handlers
+  // Simple quick-links menu toggle + close handlers
   btn && btn.addEventListener('click', () => {
     const open = pop.style.display === 'block';
     pop.style.display = open ? 'none' : 'block';
@@ -420,8 +353,6 @@
   });
 })();
 </script>
-
-
 
 </body>
 </html>
