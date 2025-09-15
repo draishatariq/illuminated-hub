@@ -200,6 +200,15 @@
     #apps-grid.cards-grid .card { width: clamp(280px, 33%, 360px); }
   }
 </style>
+<style id="grid-hardfix">
+  main.wrap { max-width: 1200px; padding: 48px 24px; }
+  #apps-grid > * { min-width: 0; }                 /* prevent item overflow */
+  #apps-grid .card { overflow: visible; }          /* no clipping */
+  @media (min-width: 1280px) {
+    /* Optional: allow slightly wider columns on large screens */
+    #apps-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  }
+</style>
 </head>
 <body>
 
@@ -248,7 +257,7 @@
 
 <main class="wrap">
   <h1>Welcome to the Hub</h1>
-  <div id="apps-grid" class="cards-grid">
+  <div id="apps-grid" class="cards-grid" style="display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:stretch">
   <a class="card" href="https://notes.illuminatednotes.net">
     <h3>
       <span class="icon" aria-hidden="true">
@@ -411,6 +420,7 @@
 
 </body>
 </html>
+
 
 
 
