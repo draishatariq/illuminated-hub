@@ -163,75 +163,55 @@
   }
 </style>
 
-<style id="cards-grid-css-v2">
-  /* Page width */
-  main.wrap { max-width: 1200px; padding: 48px 24px; }
 
-  /* Robust multi-column grid for dashboard cards */
+
+
+
+<style id="dashboard-grid-clean">
+  /* Comfortable page width */
+  main.wrap { max-width: 1200px; padding: 36px 24px; margin: 0 auto; }
+
+  /* Multi-column grid */
   #apps-grid.cards-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: stretch;
     width: 100%;
-    display: grid !important;
-    gap: 24px !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    align-items: stretch !important;
   }
 
-  /* Make sure children can shrink to fit and not overflow */
-  #apps-grid > * { min-width: 0; }
+  /* Make sure items behave like grid cells, not full-width rows */
+  #apps-grid > * { grid-column: auto !important; min-width: 0; width: auto; }
 
-  /* Card basics (no clipping) */
+  /* Smaller, tidy cards */
   #apps-grid .card {
     text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    overflow: visible; /* prevent content from being cut off */
+    padding: 16px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border, #e5e7eb);
+    background: var(--card, #fff);
+    box-shadow: 0 1px 0 rgba(17,24,39,.04) inset;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    overflow: visible;
   }
+  #apps-grid .card:hover {
+    transform: translateY(-2px);
+    border-color: #c9cbe3;
+    box-shadow: 0 10px 24px rgba(12,22,44,.10);
+  }
+  #apps-grid .card h3 { margin: 0 0 6px; font-size: 1.02rem; display:flex; align-items:center; gap:10px; }
+  #apps-grid .card p  { margin: 0; font-size: .9rem; color: var(--muted, #6b7280); }
 
-  /* Larger screens: allow slightly wider cards */
+  /* Slightly wider columns on large screens */
   @media (min-width: 1280px) {
-    #apps-grid.cards-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; }
+    #apps-grid.cards-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   }
 
-  /* Safety fallback for very old browsers without Grid */
+  /* Fallback if CSS Grid unsupported */
   @supports not (display: grid) {
-    #apps-grid.cards-grid { display: flex !important; flex-wrap: wrap; gap: 24px; }
-    #apps-grid.cards-grid .card { width: clamp(280px, 33%, 360px); }
+    #apps-grid.cards-grid { display: flex; flex-wrap: wrap; gap: 18px; }
+    #apps-grid.cards-grid .card { width: clamp(220px, 31%, 320px); }
   }
-</style>
-
-
-<style id="layout-reset-v3">
-  /* --- Full-width reset (wins over old centered layouts) --- */
-  html, body { width: 100% !important; margin: 0 !important; padding: 0 !important; }
-  body { display: block !important; min-height: 0 !important; } /* cancel any grid/flex centering */
-  main.wrap {
-    width: min(1200px, 100vw) !important;
-    max-width: none !important;
-    margin: 0 auto !important;
-    padding: 48px 24px !important;
-  }
-
-  /* --- Real grid on dashboard --- */
-  #apps-grid {
-    display: grid !important;
-    gap: 24px !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    align-items: stretch !important;
-    width: 100% !important;
-  }
-  #apps-grid > * { min-width: 0 !important; }
-  #apps-grid .card { overflow: visible !important; }
-
-  @media (min-width: 1280px){
-    #apps-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; }
-  }
-
-  /* TEMP visual guides so we can *see* the widths; remove after confirming */
-  main.wrap { outline: 2px dashed #60a5fa; outline-offset: 6px; }
-  #apps-grid { outline: 2px dashed #f59e0b; outline-offset: 6px; }
-  #apps-grid .card { outline: 1px dotted #10b981; }
 </style>
 </head>
 <body>
@@ -443,54 +423,10 @@
 </script>
 
 
-<script id="layout-debug-v2">
-  (function () {
-    function widen(el){
-      var seen = [];
-      while (el && el.nodeType === 1) {
-        var s = el.style;
-        try {
-          if (s && s.setProperty) {
-            s.setProperty('max-width','none','important');
-            s.setProperty('width','100%','important');
-            s.setProperty('display','block','important');
-            s.setProperty('grid-column','1 / -1','important'); /* escape any grid track */
-          }
-          var cs = getComputedStyle(el);
-          var rect = el.getBoundingClientRect();
-          console.log('[Layout]', el.tagName + (el.id ? '#'+el.id : '') + (el.className ? '.'+String(el.className).replace(/\s+/g,'.') : ''), 
-                      'display=', cs.display, 'maxW=', cs.maxWidth, 'width=', rect.width);
-        } catch (e) {}
-        if (el.tagName === 'BODY') break;
-        el = el.parentElement;
-      }
-    }
-    function force(){
-      var grid = document.getElementById('apps-grid') || document.querySelector('main .grid, .cards-grid');
-      if (!grid) return;
-      // Force grid (again) with important flags
-      var s = grid.style;
-      if (s && s.setProperty){
-        s.setProperty('display','grid','important');
-        s.setProperty('gap','24px','important');
-        s.setProperty('grid-template-columns','repeat(auto-fit, minmax(280px, 1fr))','important');
-        s.setProperty('align-items','stretch','important');
-        s.setProperty('width','100%','important');
-      }
-      // Walk up and widen ancestors
-      widen(grid);
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', force);
-    } else {
-      force();
-    }
-    window.addEventListener('load', force);
-    window.addEventListener('resize', force);
-  })();
-</script>
+
 </body>
 </html>
+
 
 
 
