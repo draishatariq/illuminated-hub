@@ -162,28 +162,42 @@
     header{ box-shadow: 0 8px 24px rgba(0,0,0,.35); }
   }
 </style>
-<style id="cards-grid-css">
-  /* Robust multi-column layout for dashboard cards */
-  .cards-grid {
+
+<style id="cards-grid-css-v2">
+  /* Page width */
+  main.wrap { max-width: 1200px; padding: 48px 24px; }
+
+  /* Robust multi-column grid for dashboard cards */
+  #apps-grid.cards-grid {
+    width: 100%;
     display: grid !important;
     gap: 24px !important;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
     align-items: stretch !important;
   }
-  .cards-grid .card {
+
+  /* Make sure children can shrink to fit and not overflow */
+  #apps-grid > * { min-width: 0; }
+
+  /* Card basics (no clipping) */
+  #apps-grid .card {
     text-align: left;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    overflow: visible; /* prevent content from being cut off */
   }
+
+  /* Larger screens: allow slightly wider cards */
   @media (min-width: 1280px) {
-    .cards-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; }
+    #apps-grid.cards-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; }
   }
-  /* Fallback if grid unsupported (very old browsers) */
+
+  /* Safety fallback for very old browsers without Grid */
   @supports not (display: grid) {
-    .cards-grid { display: flex !important; flex-wrap: wrap; gap: 24px; }
-    .cards-grid .card { width: clamp(260px, 33%, 340px); }
+    #apps-grid.cards-grid { display: flex !important; flex-wrap: wrap; gap: 24px; }
+    #apps-grid.cards-grid .card { width: clamp(280px, 33%, 360px); }
   }
 </style>
 </head>
@@ -234,7 +248,7 @@
 
 <main class="wrap">
   <h1>Welcome to the Hub</h1>
-  <div id="apps-grid" class="grid cards-grid">
+  <div id="apps-grid" class="cards-grid">
   <a class="card" href="https://notes.illuminatednotes.net">
     <h3>
       <span class="icon" aria-hidden="true">
@@ -397,6 +411,7 @@
 
 </body>
 </html>
+
 
 
 
