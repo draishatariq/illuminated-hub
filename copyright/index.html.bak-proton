@@ -1,6 +1,6 @@
 ﻿<!doctype html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Privacy Policy • Illuminated Pro Hub</title>
+<title>Copyright • Illuminated Pro Hub</title>
 <style>
 :root{--bg:#f9fafc;--ink:#111827;--muted:#6b7280;--border:#e5e7eb;--brand:#3b82f6}
 *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);display:flex;min-height:100vh;flex-direction:column}
@@ -31,66 +31,41 @@ footer a{color:inherit;text-decoration:none;margin:0 8px} footer a:hover{text-de
       <div id="accountMenu" class="menu" style="display:none;">
         <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account</button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
-  <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
-  <a href="/auth/logout" role="menuitem">Sign out</a>
-</div>
+          <a href="/profile" role="menuitem">Profile</a>
+          <a href="/billing" role="menuitem">Billing</a>
+          <a href="/settings" role="menuitem">Settings</a>
+          <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
+          <a href="/auth/logout" role="menuitem">Sign out</a>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-  <h1>Privacy Policy</h1>
-  <p><strong>Last updated:</strong> 8 September 2025</p>
-  <p>This policy explains how <strong>Illuminated Thinking</strong> (“we”, “us”) handles your personal data in connection with the Illuminated Pro Hub. It reflects UK GDPR and the Data Protection Act 2018.</p>
+  <h1>Copyright</h1>
+  <p><strong>© Illuminated Thinking.</strong> All rights reserved unless otherwise stated.</p>
 
-  <h2>Who we are</h2>
-  <p>Controller: Illuminated Thinking. Contact: <a href="mailto:info@illuminatedthinking.co.uk">Contact</a>.</p>
+  <h2>Ownership</h2>
+  <p>All content, trademarks, graphics, and code on this site are owned by Illuminated Thinking or its licensors.</p>
 
-  <h2>What we collect</h2>
+  <h2>Permitted Use</h2>
   <ul>
-    <li>Account data (name, email) from your identity provider via Cloudflare Access.</li>
-    <li>Usage data (pages viewed, basic device info) for security/analytics.</li>
-    <li>Support messages you send us.</li>
+    <li>View pages in a web browser and make temporary cache copies.</li>
+    <li>Link to our pages with clear attribution, without implying endorsement.</li>
   </ul>
 
-  <h2>How we use your data</h2>
+  <h2>Prohibited Use</h2>
   <ul>
-    <li>Authenticate you and operate the Hub.</li>
-    <li>Provide support and service communications.</li>
-    <li>Improve security and performance.</li>
+    <li>Copying, redistributing, or commercialising content without permission.</li>
+    <li>Removing copyright notices, or reverse-engineering code where not allowed.</li>
   </ul>
 
-  <h2>Legal bases</h2>
-  <ul>
-    <li><em>Contract</em> &mdash; to provide the Hub you access.</li>
-    <li><em>Legitimate interests</em> &mdash; security, performance, analytics proportional to risk.</li>
-    <li><em>Consent</em> &mdash; when we ask for it (e.g., optional cookies or marketing).</li>
-  </ul>
+  <h2>Licences & Attributions</h2>
+  <p>Open-source libraries retain their original licences. Third-party marks remain the property of their owners.</p>
 
-  <h2>Retention</h2>
-  <p>We keep data only as long as necessary for the purposes above, then delete or anonymise it. Specific retention periods may vary by record type and legal requirements.</p>
-
-  <h2>Sharing</h2>
-  <p>We use trusted processors to run the Hub (e.g., Cloudflare). We don’t sell your personal data. We only share when necessary for service delivery, legal compliance, or to protect rights.</p>
-
-  <h2>International transfers</h2>
-  <p>Where data leaves the UK/EEA, we rely on appropriate safeguards (e.g., adequacy decisions or standard contractual clauses).</p>
-
-  <h2>Your rights</h2>
-  <p>UK/EEA users can request access, correction, deletion, restriction, portability, or objection. You can also withdraw consent where relied upon. Contact us using the email above.</p>
-
-  <h2>Cookies & similar tech</h2>
-  <p>We may use essential cookies for login/session security and limited analytics that respect your privacy. You can control non-essential cookies if/when offered.</p>
-
-  <h2>Security</h2>
-  <p>We apply reasonable technical and organisational measures to protect your data. No system is 100% secure.</p>
-
-  <h2>Questions or complaints</h2>
-  <p>Contact us first. You also have the right to complain to the UK ICO: <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>.</p>
-
-  <h2>Changes</h2>
-  <p>We’ll update this page when our practices change. Significant changes will be communicated where appropriate.</p>
+  <h2>Report Infringement</h2>
+  <p>If you believe content here infringes your rights, email: <a href="mailto:info@illuminatedthinking.co.uk">Contact</a> with details of the work, the URL, and proof of ownership.</p>
 </main>
 
 <footer>
@@ -101,7 +76,6 @@ footer a{color:inherit;text-decoration:none;margin:0 8px} footer a:hover{text-de
 (function(){const n=document.getElementById('userName'),a=document.getElementById('avatar'),s=document.getElementById('signInLink'),m=document.getElementById('accountMenu'),b=document.getElementById('menuBtn'),p=document.getElementById('menuPop');function i(t){return (t||'').split(/\s+/).filter(Boolean).slice(0,2).map(s=>s[0].toUpperCase()).join('')||'IT'}fetch('/api/me',{credentials:'include'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{n.textContent=d.name||d.email; if(d.picture){a.style.background='transparent';a.style.border='none';a.innerHTML='<img src="'+d.picture+'" alt="" style="width:100%;height:100%;border-radius:999px;display:block;object-fit:cover">'}else{a.textContent=i(d.name||d.email)} s.style.display='none';m.style.display='block'}).catch(()=>{n.textContent='Guest';a.textContent='IT';s.style.display='inline-block';m.style.display='none'}); b&&b.addEventListener('click',()=>{const o=p.style.display==='block';p.style.display=o?'none':'block';b.setAttribute('aria-expanded',String(!o))}); document.addEventListener('click',e=>{if(p&&b&&!p.contains(e.target)&&!b.contains(e.target)){p.style.display='none';b.setAttribute('aria-expanded','false')}}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&p){p.style.display='none';b.setAttribute('aria-expanded','false')}});})();
 </script>
 </body></html>
-
 
 
 

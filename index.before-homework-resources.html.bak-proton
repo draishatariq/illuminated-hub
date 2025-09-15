@@ -103,9 +103,12 @@
       <div id="accountMenu" class="menu" style="display:none;">
         <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account</button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
-  <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
-  <a href="/auth/logout" role="menuitem">Sign out</a>
-</div>
+          <a href="/profile" role="menuitem">Profile</a>
+          <a href="/billing" role="menuitem">Billing</a>
+          <a href="/settings" role="menuitem">Settings</a>
+          <hr style="border:none;border-top:1px solid var(--border); margin:6px 0;">
+          <a href="/auth/logout" role="menuitem">Sign out</a>
+        </div>
       </div>
     </div>
   </div>
@@ -139,16 +142,6 @@
       Homework & Resources
     </h3>
     <p>Send clients customised & fillable forms</p>
-  </a>
-
-  <a class="card" href="/homework-resources/">
-    <h3>
-      <span class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L10.5 5.43"></path><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 1 0 7.07 7.07l2.43-2.43"></path></svg>
-      </span>
-      Homework &amp; Resources
-    </h3>
-    <p>Send clients interactive forms</p>
   </a>
 
   <a class="card" href="/homework-resources/">
@@ -233,8 +226,6 @@
 
 </body>
 </html>
-
-
 
 
 

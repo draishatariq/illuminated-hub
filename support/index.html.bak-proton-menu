@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Support & Guides • Illuminated Pro Hub</title>
+<link rel="icon" href="/assets/favicon.png" sizes="32x32" />
+<style>
+:root{--bg:#f9fafc;--ink:#111827;--muted:#6b7280;--border:#e5e7eb;--card:#fff;--brand:#3b82f6}
+@media (prefers-color-scheme: dark){:root{--bg:#0b0f14;--ink:#e5e7eb;--muted:#9aa4b2;--border:#263041;--card:#0f141b;--brand:#6ea8ff} body{color-scheme:dark}}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);display:flex;min-height:100vh;flex-direction:column}
+header{background:#fff;border-bottom:1px solid var(--border)}
+@media (prefers-color-scheme: dark){header{background:#0f141b}}
+.nav{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
+.brand img{width:28px;height:28px}
+main{flex:1;max-width:900px;margin:0 auto;padding:40px 20px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:18px}
+h1{margin:0 0 16px;font-size:1.8rem}
+h2{margin:0 0 10px;font-size:1.1rem}
+ul{margin:0;padding-left:18px} li{margin:6px 0}
+a.btn{display:inline-block;margin-top:10px;border:1px solid var(--border);padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit;background:#fff}
+a.btn:hover{border-color:#c9cbe3;box-shadow:0 6px 18px rgba(12,22,44,.08)}
+@media (prefers-color-scheme: dark){a.btn{background:#0f141b}}
+footer{background:#fff;border-top:1px solid var(--border);padding:16px;text-align:center;color:var(--muted);font-size:.9rem}
+@media (prefers-color-scheme: dark){footer{background:#0f141b}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="/"><img src="/assets/logo.png" alt=""/><span>illuminated.pro &mdash; Hub</span></a>
+    <a class="btn" href="https://notes.illuminatednotes.net" target="_blank" rel="noopener">Open AI Transcribe Assistant ↗</a>
+  </div>
+</header>
+
+<main>
+  <h1>Support & Guides</h1>
+
+  <div class="section">
+    <h2>AI Transcribe Assistant</h2>
+    <p class="small">How to capture sessions securely, generate accurate transcripts, and share notes with clients.</p>
+    <ul>
+      <li><a href="/docs/ai-transcribe/user-guide.pdf" target="_blank" rel="noopener">Clinician User Guide (PDF)</a></li>
+      <li><a href="/docs/ai-transcribe/client-leaflet.pdf" target="_blank" rel="noopener">Client Information Leaflet (PDF)</a></li>
+    </ul>
+  </div>
+
+  <!-- Add other app sections here later -->
+  <div class="section">
+    <h2>Online BLS (EMDR)</h2>
+    <p class="small">Guide to delivering remote bilateral stimulation using the clinician tool.</p>
+    <ul>
+      <li><a href="/docs/bls/bls-clinician-guide.pdf" target="_blank" rel="noopener">Clinician Guide (PDF)</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Use</a> · <a href="/copyright">&copy; Illuminated Thinking</a>
+</footer>
+</body>
+</html>
+
+
+
+

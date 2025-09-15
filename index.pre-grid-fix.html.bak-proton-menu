@@ -103,9 +103,12 @@
       <div id="accountMenu" class="menu" style="display:none;">
         <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account</button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
-  <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
-  <a href="/auth/logout" role="menuitem">Sign out</a>
-</div>
+          <a href="/profile" role="menuitem">Profile</a>
+          <a href="/billing" role="menuitem">Billing</a>
+          <a href="/settings" role="menuitem">Settings</a>
+          <hr style="border:none;border-top:1px solid var(--border); margin:6px 0;">
+          <a href="/auth/logout" role="menuitem">Sign out</a>
+        </div>
       </div>
     </div>
   </div>
@@ -233,7 +236,6 @@
 
 </body>
 </html>
-
 
 
 

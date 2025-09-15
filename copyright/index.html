@@ -31,12 +31,9 @@ footer a{color:inherit;text-decoration:none;margin:0 8px} footer a:hover{text-de
       <div id="accountMenu" class="menu" style="display:none;">
         <button id="menuBtn" class="menu-btn" aria-haspopup="true" aria-expanded="false">Account</button>
         <div id="menuPop" class="menu-pop" role="menu" aria-label="User menu">
-          <a href="/profile" role="menuitem">Profile</a>
-          <a href="/billing" role="menuitem">Billing</a>
-          <a href="/settings" role="menuitem">Settings</a>
-          <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
-          <a href="/auth/logout" role="menuitem">Sign out</a>
-        </div>
+  <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
+  <a href="/auth/logout" role="menuitem">Sign out</a>
+</div>
       </div>
     </div>
   </div>
@@ -76,6 +73,7 @@ footer a{color:inherit;text-decoration:none;margin:0 8px} footer a:hover{text-de
 (function(){const n=document.getElementById('userName'),a=document.getElementById('avatar'),s=document.getElementById('signInLink'),m=document.getElementById('accountMenu'),b=document.getElementById('menuBtn'),p=document.getElementById('menuPop');function i(t){return (t||'').split(/\s+/).filter(Boolean).slice(0,2).map(s=>s[0].toUpperCase()).join('')||'IT'}fetch('/api/me',{credentials:'include'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{n.textContent=d.name||d.email; if(d.picture){a.style.background='transparent';a.style.border='none';a.innerHTML='<img src="'+d.picture+'" alt="" style="width:100%;height:100%;border-radius:999px;display:block;object-fit:cover">'}else{a.textContent=i(d.name||d.email)} s.style.display='none';m.style.display='block'}).catch(()=>{n.textContent='Guest';a.textContent='IT';s.style.display='inline-block';m.style.display='none'}); b&&b.addEventListener('click',()=>{const o=p.style.display==='block';p.style.display=o?'none':'block';b.setAttribute('aria-expanded',String(!o))}); document.addEventListener('click',e=>{if(p&&b&&!p.contains(e.target)&&!b.contains(e.target)){p.style.display='none';b.setAttribute('aria-expanded','false')}}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&p){p.style.display='none';b.setAttribute('aria-expanded','false')}});})();
 </script>
 </body></html>
+
 
 
 
