@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Illuminated Thinking Hub</title>
+<title>Support & Guides • Illuminated Pro Hub</title>
 <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
 <style>
 :root{--bg:#f9fafc;--ink:#111827;--muted:#6b7280;--border:#e5e7eb;--card:#fff;--brand:#3b82f6}
@@ -29,7 +29,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px;text-alig
 <body>
 <header>
   <div class="nav">
-    <a class="brand" href="/"><img src="/assets/logo.png" alt=""/><span>Illuminated Thinking Hub</span></a>
+    <a class="brand" href="/"><img src="/assets/logo.png" alt=""/><span>illuminated.pro &mdash; Hub</span></a>
     <a class="btn" href="https://notes.illuminatednotes.net" target="_blank" rel="noopener">Open AI Transcribe Assistant ↗</a>
   </div>
 </header>
@@ -61,7 +61,6 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px;text-alig
 </footer>
 </body>
 </html>
-
 
 
 

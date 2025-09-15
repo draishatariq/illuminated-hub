@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Illuminated Thinking Hub</title>
+  <title>Illuminated Pro Hub</title>
   <meta name="description" content="Central hub for Illuminated Thinking tools and resources." />
   <style>
     :root {
@@ -108,7 +108,7 @@
     <!-- Logo: replace src with your file path -->
     <a class="brand" href="/" aria-label="Illuminated Pro Hub Home">
       <img src="/assets/logo.png" alt="Illuminated Thinking logo" />
-      <span>Illuminated Thinking Hub</span>
+      <span>illuminated.pro &mdash; Hub</span>
     </a>
 
     <div class="nav-right">
@@ -275,7 +275,6 @@
 
 </body>
 </html>
-
 
 
 
