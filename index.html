@@ -201,31 +201,37 @@
   }
 </style>
 
-<style id="grid-force">
-  /* widen content */
-  main.wrap { max-width: 1200px !important; padding: 48px 24px !important; margin: 0 auto !important; }
 
-  /* enforce grid on our container */
-  #apps-grid { 
+<style id="layout-reset-v3">
+  /* --- Full-width reset (wins over old centered layouts) --- */
+  html, body { width: 100% !important; margin: 0 !important; padding: 0 !important; }
+  body { display: block !important; min-height: 0 !important; } /* cancel any grid/flex centering */
+  main.wrap {
+    width: min(1200px, 100vw) !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 48px 24px !important;
+  }
+
+  /* --- Real grid on dashboard --- */
+  #apps-grid {
     display: grid !important;
     gap: 24px !important;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
     align-items: stretch !important;
     width: 100% !important;
   }
-
-  /* let children shrink and not clip */
   #apps-grid > * { min-width: 0 !important; }
   #apps-grid .card { overflow: visible !important; }
-
-  /* TEMP: outlines to see widths (remove later) */
-  main.wrap { outline: 2px dashed #60a5fa; outline-offset: 6px; }
-  #apps-grid { outline: 2px dashed #f59e0b; outline-offset: 6px; }
-  #apps-grid .card { outline: 1px dotted #10b981; }
 
   @media (min-width: 1280px){
     #apps-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; }
   }
+
+  /* TEMP visual guides so we can *see* the widths; remove after confirming */
+  main.wrap { outline: 2px dashed #60a5fa; outline-offset: 6px; }
+  #apps-grid { outline: 2px dashed #f59e0b; outline-offset: 6px; }
+  #apps-grid .card { outline: 1px dotted #10b981; }
 </style>
 </head>
 <body>
@@ -436,42 +442,56 @@
 })();
 </script>
 
-<script id="grid-force-js">
+
+<script id="layout-debug-v2">
   (function () {
-    function forceGrid() {
-      var grid = document.getElementById('apps-grid') || document.querySelector('main .grid');
-      if (!grid) return;
-
-      var s = grid.style;
-      if (s.setProperty) {
-        s.setProperty('display', 'grid', 'important');
-        s.setProperty('gap', '24px', 'important');
-        s.setProperty('grid-template-columns', 'repeat(auto-fit, minmax(280px, 1fr))', 'important');
-        s.setProperty('align-items', 'stretch', 'important');
-        s.setProperty('width', '100%', 'important');
-      } else {
-        // Fallback
-        grid.setAttribute('style', 'display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:stretch;width:100%');
+    function widen(el){
+      var seen = [];
+      while (el && el.nodeType === 1) {
+        var s = el.style;
+        try {
+          if (s && s.setProperty) {
+            s.setProperty('max-width','none','important');
+            s.setProperty('width','100%','important');
+            s.setProperty('display','block','important');
+            s.setProperty('grid-column','1 / -1','important'); /* escape any grid track */
+          }
+          var cs = getComputedStyle(el);
+          var rect = el.getBoundingClientRect();
+          console.log('[Layout]', el.tagName + (el.id ? '#'+el.id : '') + (el.className ? '.'+String(el.className).replace(/\s+/g,'.') : ''), 
+                      'display=', cs.display, 'maxW=', cs.maxWidth, 'width=', rect.width);
+        } catch (e) {}
+        if (el.tagName === 'BODY') break;
+        el = el.parentElement;
       }
-
-      // Quick debug in console
-      try {
-        var cs = getComputedStyle(grid);
-        console.log('[Grid Debug] display=', cs.display, ' columns=', cs.gridTemplateColumns, ' grid width=', grid.getBoundingClientRect().width);
-      } catch (e) {}
     }
-
+    function force(){
+      var grid = document.getElementById('apps-grid') || document.querySelector('main .grid, .cards-grid');
+      if (!grid) return;
+      // Force grid (again) with important flags
+      var s = grid.style;
+      if (s && s.setProperty){
+        s.setProperty('display','grid','important');
+        s.setProperty('gap','24px','important');
+        s.setProperty('grid-template-columns','repeat(auto-fit, minmax(280px, 1fr))','important');
+        s.setProperty('align-items','stretch','important');
+        s.setProperty('width','100%','important');
+      }
+      // Walk up and widen ancestors
+      widen(grid);
+    }
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', forceGrid);
+      document.addEventListener('DOMContentLoaded', force);
     } else {
-      forceGrid();
+      force();
     }
-    window.addEventListener('load', forceGrid);
-    window.addEventListener('resize', forceGrid);
+    window.addEventListener('load', force);
+    window.addEventListener('resize', force);
   })();
 </script>
 </body>
 </html>
+
 
 
 
